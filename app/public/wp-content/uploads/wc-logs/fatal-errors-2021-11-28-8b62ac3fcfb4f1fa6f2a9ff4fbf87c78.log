@@ -1,0 +1,16 @@
+2021-11-28T19:23:25+00:00 CRITICAL syntax error, unexpected '}' in /Users/kokkieh/Local/custom-woo-project/app/public/wp-content/themes/storefront/inc/storefront-template-functions.php on line 165
+
+2021-11-28T19:23:42+00:00 CRITICAL syntax error, unexpected '}' in /Users/kokkieh/Local/custom-woo-project/app/public/wp-content/themes/storefront/inc/storefront-template-functions.php on line 165
+
+2021-11-28T19:24:41+00:00 CRITICAL syntax error, unexpected '}' in /Users/kokkieh/Local/custom-woo-project/app/public/wp-content/themes/storefront/inc/storefront-template-functions.php on line 165
+
+2021-11-28T19:25:13+00:00 CRITICAL syntax error, unexpected '}' in /Users/kokkieh/Local/custom-woo-project/app/public/wp-content/themes/storefront/inc/storefront-template-functions.php on line 165
+
+2021-11-28T19:25:25+00:00 CRITICAL syntax error, unexpected '}' in /Users/kokkieh/Local/custom-woo-project/app/public/wp-content/themes/storefront/inc/storefront-template-functions.php on line 165
+
+2021-11-28T19:27:00+00:00 CRITICAL syntax error, unexpected '}' in /Users/kokkieh/Local/custom-woo-project/app/public/wp-content/themes/storefront/inc/storefront-template-functions.php on line 165
+
+2021-11-28T19:27:25+00:00 CRITICAL syntax error, unexpected '}' in /Users/kokkieh/Local/custom-woo-project/app/public/wp-content/themes/storefront/inc/storefront-template-functions.php on line 165
+
+2021-11-28T19:30:45+00:00 CRITICAL require(): Failed opening required 'inc/storefront-template-functions.php' (include_path='.:/usr/share/php:/www/wp-content/pear') in /Users/kokkieh/Local/custom-woo-project/app/public/wp-content/themes/storefront/functions.php on line 33
+

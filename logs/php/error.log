@@ -44,3 +44,26 @@
 [26-Nov-2021 18:02:41 UTC] PHP  20. Automattic\WooCommerce\Admin\RemoteInboxNotifications\TransformerService::apply() /Users/kokkieh/Local/custom-woo-project/app/public/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/RemoteInboxNotifications/OptionRuleProcessor.php:45
 [26-Nov-2021 18:02:41 UTC] PHP  21. Automattic\WooCommerce\Admin\RemoteInboxNotifications\Transformers\Count->transform() /Users/kokkieh/Local/custom-woo-project/app/public/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/RemoteInboxNotifications/TransformerService.php:59
 [26-Nov-2021 18:02:41 UTC] PHP  22. count() /Users/kokkieh/Local/custom-woo-project/app/public/wp-content/plugins/woocommerce/packages/woocommerce-admin/src/RemoteInboxNotifications/Transformers/Count.php:24
+[28-Nov-2021 19:23:25 UTC] PHP Parse error:  syntax error, unexpected '}' in /Users/kokkieh/Local/custom-woo-project/app/public/wp-content/themes/storefront/inc/storefront-template-functions.php on line 165
+[28-Nov-2021 19:23:42 UTC] PHP Parse error:  syntax error, unexpected '}' in /Users/kokkieh/Local/custom-woo-project/app/public/wp-content/themes/storefront/inc/storefront-template-functions.php on line 165
+[28-Nov-2021 19:24:41 UTC] PHP Parse error:  syntax error, unexpected '}' in /Users/kokkieh/Local/custom-woo-project/app/public/wp-content/themes/storefront/inc/storefront-template-functions.php on line 165
+[28-Nov-2021 19:25:13 UTC] PHP Parse error:  syntax error, unexpected '}' in /Users/kokkieh/Local/custom-woo-project/app/public/wp-content/themes/storefront/inc/storefront-template-functions.php on line 165
+[28-Nov-2021 19:25:25 UTC] PHP Parse error:  syntax error, unexpected '}' in /Users/kokkieh/Local/custom-woo-project/app/public/wp-content/themes/storefront/inc/storefront-template-functions.php on line 165
+[28-Nov-2021 19:27:00 UTC] PHP Parse error:  syntax error, unexpected '}' in /Users/kokkieh/Local/custom-woo-project/app/public/wp-content/themes/storefront/inc/storefront-template-functions.php on line 165
+[28-Nov-2021 19:27:25 UTC] PHP Parse error:  syntax error, unexpected '}' in /Users/kokkieh/Local/custom-woo-project/app/public/wp-content/themes/storefront/inc/storefront-template-functions.php on line 165
+[28-Nov-2021 19:30:45 UTC] PHP Warning:  require(/Users/kokkieh/Local/custom-woo-project/app/public/wp-content/themes/storefront/inc/storefront-template-functions.php): failed to open stream: No such file or directory in /Users/kokkieh/Local/custom-woo-project/app/public/wp-content/themes/storefront/functions.php on line 33
+[28-Nov-2021 19:30:45 UTC] PHP Stack trace:
+[28-Nov-2021 19:30:45 UTC] PHP   1. {main}() /Users/kokkieh/Local/custom-woo-project/app/public/index.php:0
+[28-Nov-2021 19:30:45 UTC] PHP   2. require() /Users/kokkieh/Local/custom-woo-project/app/public/index.php:17
+[28-Nov-2021 19:30:45 UTC] PHP   3. require_once() /Users/kokkieh/Local/custom-woo-project/app/public/wp-blog-header.php:13
+[28-Nov-2021 19:30:45 UTC] PHP   4. require_once() /Users/kokkieh/Local/custom-woo-project/app/public/wp-load.php:50
+[28-Nov-2021 19:30:45 UTC] PHP   5. require_once() /Users/kokkieh/Local/custom-woo-project/app/public/wp-config.php:77
+[28-Nov-2021 19:30:45 UTC] PHP   6. include() /Users/kokkieh/Local/custom-woo-project/app/public/wp-settings.php:546
+[28-Nov-2021 19:30:45 UTC] PHP Fatal error:  require(): Failed opening required 'inc/storefront-template-functions.php' (include_path='.:/usr/share/php:/www/wp-content/pear') in /Users/kokkieh/Local/custom-woo-project/app/public/wp-content/themes/storefront/functions.php on line 33
+[28-Nov-2021 19:30:45 UTC] PHP Stack trace:
+[28-Nov-2021 19:30:45 UTC] PHP   1. {main}() /Users/kokkieh/Local/custom-woo-project/app/public/index.php:0
+[28-Nov-2021 19:30:45 UTC] PHP   2. require() /Users/kokkieh/Local/custom-woo-project/app/public/index.php:17
+[28-Nov-2021 19:30:45 UTC] PHP   3. require_once() /Users/kokkieh/Local/custom-woo-project/app/public/wp-blog-header.php:13
+[28-Nov-2021 19:30:45 UTC] PHP   4. require_once() /Users/kokkieh/Local/custom-woo-project/app/public/wp-load.php:50
+[28-Nov-2021 19:30:45 UTC] PHP   5. require_once() /Users/kokkieh/Local/custom-woo-project/app/public/wp-config.php:77
+[28-Nov-2021 19:30:45 UTC] PHP   6. include() /Users/kokkieh/Local/custom-woo-project/app/public/wp-settings.php:546
