@@ -20,4 +20,11 @@ if ( ! function_exists( 'storefront_credit' ) ) {
 	}
 }
 
+function kokkie_product_summary() {
+    ?>
+	<div>Hello world</div>
+	<?php
+}
+add_action( 'woocommerce_single_product_summary', 'kokkie_product_summary' );
+
 ?>
