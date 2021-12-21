@@ -1,0 +1,15 @@
+{
+  "name": "gh-commit-widget",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "Herman Kok",
+  "license": "ISC",
+  "devDependencies": {
+    "@wordpress/scripts": "19.2.2"
+  }, 
+  "scripts": {
+    "start": "wp-scripts start",
+    "build": "wp-scripts build"
+  }
+}
