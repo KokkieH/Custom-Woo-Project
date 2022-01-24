@@ -26,14 +26,16 @@ function commit_product_summary() {
 	$commit_body = wp_remote_retrieve_body( $commit_request );
 
 	$commit_data = json_decode( $commit_body );
+
+	$block_content = '<h3>Commit hash</h3>' . 
+					'<a href="' . $commit_data->html_url . '">' . substr($commit_data->sha, 0, 7) . '</a>' .
+					'<h3>Commit Author</h3>' .
+					'<a href="' . $commit_data->author->html_url . '">' . $commit_data->commit->author->name . '</a>' . 
+					'<h3>Commit message</h3>' . 
+					$commit_data->commit->message;
 	
 	if ( ! empty( $commit_data ) ) {
-		echo '<h3>Commit hash</h3>';
-		echo '<a href="' . $commit_data->html_url . '">' . substr($commit_data->sha, 0, 7) . '</a>';
-		echo '<h3>Commit Author</h3>';
-		echo '<a href="' . $commit_data->author->html_url . '">' . $commit_data->commit->author->name . '</a>';
-		echo '<h3>Commit message</h3>';
-		echo  $commit_data->commit->message;
+		return $block_content;
 	}
 }
 
