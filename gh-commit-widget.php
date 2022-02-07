@@ -64,5 +64,6 @@ add_action( 'init', 'kokkieh_gh_commit_register_block' );
 require_once __DIR__ . '/include/class-rest-api.php';
 new KokkieH_REST_API();
 
-
+require_once __DIR__ . '/include/class-admin.php';
+new KokkieH_Admin();
 
