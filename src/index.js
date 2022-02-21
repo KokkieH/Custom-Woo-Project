@@ -1,21 +1,55 @@
 import { registerBlockType } from '@wordpress/blocks';
-import { useBlockProps } from '@wordpress/block-editor';
-
-const blockStyle = {
-    backgroundColor: '#008710',
-    color: '#fff',
-    padding: '20px',
-};
+import {
+        useBlockProps,
+        InspectorControls,
+} from '@wordpress/block-editor';
+import {
+        PanelBody, 
+        TextControl,
+} from '@wordpress/components';
 
 registerBlockType( 'kokkieh/gh-commit-block', {
-    edit() {
-        const blockProps = useBlockProps( { style: blockStyle } );
-        
-        return <div { ...blockProps }>Hello World (from the editor).</div>;
+    attributes: {
+        commitHash: {
+            type: 'string',
+        },
     },
-    save() {
-        const blockProps = useBlockProps.save( { style: blockStyle } );
 
-        return <div { ...blockProps }>Hello World (from the frontend).</div>;
+    edit: ( { attributes, setAttributes } ) => {
+        const blockProps = useBlockProps( { className: 'blockStyle' } );
+        const {
+            commitHash,
+        } = attributes;
+
+        function onChangeTextField( newValue ) {
+            setAttributes( { commitHash: newValue } );
+        }
+
+        return <div { ...blockProps }>
+            <InspectorControls key="setting">
+                <PanelBody title="GitHub Commit Settings">
+                    <div id="gh-commit-widget-controls">
+                        <fieldset>
+                            <legend className="blocks-base-control__label">
+                                Commit Hash
+                            </legend>
+                            <TextControl
+                                value={ commitHash }
+                                onChange={ onChangeTextField }
+                            />
+                        </fieldset>
+                    </div>
+                </PanelBody>
+            </InspectorControls>
+            The Commit Hash is { commitHash }</div>;
+    },
+
+    save: ( { attributes } ) => {
+        const blockProps = useBlockProps.save( { className: 'blockStyle' } );
+        const {
+            commitHash,
+        } = attributes;
+
+        return <div { ...blockProps }>The Commit Hash is { commitHash }</div>;
     },
 } );
