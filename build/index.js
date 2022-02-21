@@ -121,18 +121,16 @@ const blockStyle = {
   color: '#fff',
   padding: '20px'
 };
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('kokkieh/github-commit-block', {
-  title: 'GH Commit Block',
-  icon: 'smiley',
-  category: 'development',
-
-  edit() {
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('kokkieh/gh-commit-block', {
+  edit: function () {
     const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
       style: blockStyle
     });
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, "Hello World (from the editor).");
+  },
+  save: function () {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, "Hello World (from the frontend).");
   }
-
 });
 }();
 /******/ })()

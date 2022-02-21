@@ -7,16 +7,12 @@ const blockStyle = {
     padding: '20px',
 };
 
-registerBlockType( 'kokkieh/github-commit-block', {
-    title: 'GH Commit Block',
-    icon: 'smiley',
-    category: 'development',
-    edit() {
+registerBlockType( 'kokkieh/gh-commit-block', {
+    edit: function () {
         const blockProps = useBlockProps( { style: blockStyle } );
- 
-        return (
-            <div { ...blockProps }>Hello World (from the editor).</div>
-        );
+        return <div { ...blockProps }>Hello World (from the editor).</div>;
     },
-    
+    save: function () {
+        return <div>Hello World (from the frontend).</div>;
+    },
 } );
