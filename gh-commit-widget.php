@@ -14,6 +14,7 @@
  * Domain Path:       /public/lang
  */
 
+// Creates block output
 function commit_product_summary() {
 	$commit_hash = 'eb1d6e113014a1c6fbfc0c4b8e7420b29d98d131';
 	$commit_url = site_url( '/wp-json/kokkieh/commit/' . $commit_hash );
@@ -42,24 +43,30 @@ function commit_product_summary() {
 // shows commit data on WooCommerce products
 add_action( 'woocommerce_single_product_summary', 'commit_product_summary' );
 
-function kokkieh_gh_commit_register_block() {
-        // automatically load dependencies and version
-        $asset_file = include( plugin_dir_path( __FILE__ ) . 'build/index.asset.php');
+// function kokkieh_gh_commit_register_block() {
+//         // automatically load dependencies and version
+//         $asset_file = include( plugin_dir_path( __FILE__ ) . 'build/index.asset.php');
  
-        wp_register_script(
-            'kokkieh-github-commit-block',
-            plugins_url( 'build/index.js', __FILE__ ),
-            $asset_file['dependencies'],
-            $asset_file['version']
-        );
+//         wp_register_script(
+//             'kokkieh-github-commit-block',
+//             plugins_url( 'build/index.js', __FILE__ ),
+//             $asset_file['dependencies'],
+//             $asset_file['version']
+//         );
      
-        register_block_type( 'kokkieh/github-commit-block', array(
-            'api_version' => 2,
-            'editor_script' => 'kokkieh-github-commit-block',
-            'render_callback' => 'commit_product_summary',
-        ) );
+//         register_block_type( 'kokkieh/github-commit-block', array(
+//             'api_version' => 2,
+//             'editor_script' => 'kokkieh-github-commit-block',
+//             'render_callback' => 'commit_product_summary',
+//         ) );
+// }
+// add_action( 'init', 'kokkieh_gh_commit_register_block' );
+
+// Register block
+function kokkieh_gh_commit_register_block() {
+	reigster_block_type( __DIR__ );
 }
-add_action( 'init', 'kokkieh_gh_commit_register_block' );
+add_action( 'init', 'kokkieh_ge_commit_register_block' );
 
 require_once __DIR__ . '/include/class-rest-api.php';
 new KokkieH_REST_API();
