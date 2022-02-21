@@ -64,9 +64,9 @@ add_action( 'woocommerce_single_product_summary', 'commit_product_summary' );
 
 // Register block
 function kokkieh_gh_commit_register_block() {
-	reigster_block_type( __DIR__ );
+	register_block_type( __DIR__ );
 }
-add_action( 'init', 'kokkieh_ge_commit_register_block' );
+add_action( 'init', 'kokkieh_gh_commit_register_block' );
 
 require_once __DIR__ . '/include/class-rest-api.php';
 new KokkieH_REST_API();
