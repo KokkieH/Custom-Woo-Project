@@ -8,11 +8,14 @@ const blockStyle = {
 };
 
 registerBlockType( 'kokkieh/gh-commit-block', {
-    edit: function () {
+    edit() {
         const blockProps = useBlockProps( { style: blockStyle } );
+        
         return <div { ...blockProps }>Hello World (from the editor).</div>;
     },
-    save: function () {
-        return <div>Hello World (from the frontend).</div>;
+    save() {
+        const blockProps = useBlockProps.save( { style: blockStyle } );
+
+        return <div { ...blockProps }>Hello World (from the frontend).</div>;
     },
 } );

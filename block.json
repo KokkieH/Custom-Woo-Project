@@ -2,7 +2,7 @@
     "apiVerson": 2,
     "name": "kokkieh/gh-commit-block",
     "title": "Github Commit Block",
-    "icon": "embed-generic",
+    "icon": "smiley",
     "category": "embed",
     "editorScript": "file:./build/index.js"
 }

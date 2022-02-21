@@ -122,15 +122,20 @@ const blockStyle = {
   padding: '20px'
 };
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('kokkieh/gh-commit-block', {
-  edit: function () {
+  edit() {
     const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
       style: blockStyle
     });
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, "Hello World (from the editor).");
   },
-  save: function () {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, "Hello World (from the frontend).");
+
+  save() {
+    const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save({
+      style: blockStyle
+    });
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, "Hello World (from the frontend).");
   }
+
 });
 }();
 /******/ })()
