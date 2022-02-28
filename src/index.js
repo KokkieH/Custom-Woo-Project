@@ -14,9 +14,6 @@ registerBlockType( 'kokkieh/gh-commit-block', {
         commitHash: {
             type: 'string',
         },
-        commitData: {
-            type: 'string',
-        },
         commitSha: {
             type: 'string',
         },
@@ -38,7 +35,6 @@ registerBlockType( 'kokkieh/gh-commit-block', {
         const blockProps = useBlockProps( { className: 'blockStyles' } );
         const {
             commitHash,
-            commitData,
             commitSha,
             commitUrl,
             authorName,
@@ -64,7 +60,7 @@ registerBlockType( 'kokkieh/gh-commit-block', {
                 setAttributes( { commitMessage: data.commit.message } );
             } )
             .catch(error => {
-                setAttributes( { commitData: 'Please enter a valid commit ID' } );
+                setAttributes( { commitSha: "Please enter a valid commit ID." } );
             } );
         }
 

@@ -147,9 +147,6 @@ __webpack_require__.r(__webpack_exports__);
     commitHash: {
       type: 'string'
     },
-    commitData: {
-      type: 'string'
-    },
     commitSha: {
       type: 'string'
     },
@@ -176,7 +173,6 @@ __webpack_require__.r(__webpack_exports__);
     });
     const {
       commitHash,
-      commitData,
       commitSha,
       commitUrl,
       authorName,
@@ -214,7 +210,7 @@ __webpack_require__.r(__webpack_exports__);
         });
       }).catch(error => {
         setAttributes({
-          commitData: 'Please enter a valid commit ID'
+          commitSha: "Please enter a valid commit ID."
         });
       });
     }
