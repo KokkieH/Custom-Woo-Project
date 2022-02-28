@@ -17,6 +17,21 @@ registerBlockType( 'kokkieh/gh-commit-block', {
         commitData: {
             type: 'string',
         },
+        commitSha: {
+            type: 'string',
+        },
+        commitUrl: {
+            type: 'string',
+        },
+        authorName: {
+            type: 'string',
+        },
+        authorUrl: {
+            type: 'string',
+        },
+        commitMessage: {
+            type: 'string',
+        },
     },
 
     edit: ( { attributes, setAttributes } ) => {
@@ -24,18 +39,34 @@ registerBlockType( 'kokkieh/gh-commit-block', {
         const {
             commitHash,
             commitData,
+            commitSha,
+            commitUrl,
+            authorName,
+            authorUrl,
+            commitMessage,
         } = attributes;
 
+        // Update commitHash value when entered into block settings
         function onChangeTextField( newValue ) {
             setAttributes( { commitHash: newValue } );
+            renderCommit(newValue);
         }
 
-        apiFetch( { path: '/kokkieh/commit/' + commitHash } )
-        .then( ( data ) => {
-            console.log(data);
-        } );
-
-        controller?.abort();
+        // Function to make API request and render the commit data
+        // (only called when the commit hash is updated in block settings)
+        function renderCommit(hash) {
+            apiFetch( { path: '/kokkieh/commit/' + hash } )
+            .then( ( data ) => {
+                setAttributes( { commitSha: data.sha } );
+                setAttributes( { commitUrl: data.html_url } );
+                setAttributes( { authorName: data.commit.author.name } );
+                setAttributes( { authorUrl: data.author.html_url } );
+                setAttributes( { commitMessage: data.commit.message } );
+            } )
+            .catch(error => {
+                setAttributes( { commitData: 'Please enter a valid commit ID' } );
+            } );
+        }
 
         return <div { ...blockProps }>
             <InspectorControls key="setting">
@@ -53,15 +84,32 @@ registerBlockType( 'kokkieh/gh-commit-block', {
                     </div>
                 </PanelBody>
             </InspectorControls>
-            The Commit Hash is { commitHash }</div>;
+            <h3>Commit Hash</h3>
+            <a href={ commitUrl }>{ commitSha }</a>
+            <h3>Commit Author</h3>
+            <a href={ authorUrl }>{ authorName }</a>
+            <h3>Commit Message</h3>
+            { commitMessage }
+        </div>;
     },
 
     save: ( { attributes } ) => {
         const blockProps = useBlockProps.save();
         const {
-            commitHash,
+            commitSha,
+            commitUrl,
+            authorName,
+            authorUrl,
+            commitMessage,
         } = attributes;
 
-        return <div { ...blockProps }>The Commit Hash is { commitHash }</div>;
+        return <div { ...blockProps }>
+            <h3>Commit Hash</h3>
+            <a href={ commitUrl }>{ commitSha }</a>
+            <h3>Commit Author</h3>
+            <a href={ authorUrl }>{ authorName }</a>
+            <h3>Commit Message</h3>
+            { commitMessage }
+        </div>;
     },
 } );

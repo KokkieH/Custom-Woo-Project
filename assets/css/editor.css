@@ -1,5 +1,15 @@
 div.wp-block.blockStyles {
     background-color: #008710;
-    color: #fff;
     padding: 20px;
+}
+div.wp-block.blockStyles, div.wp-block.blockStyles h3, div.wp-block.blockStyles a:hover {
+    color: #fff;
+}
+
+div.wp-block.blockStyles a {
+    color: rgb(105, 211, 252);
+}
+
+div.wp-block.blockStyles h3 {
+    font-weight: 500;
 }

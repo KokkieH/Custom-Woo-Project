@@ -1,5 +1,16 @@
 .wp-block-kokkieh-gh-commit-block {
     background-color: #008710;
-    color: #fff;
     padding: 20px;
+}
+
+.wp-block-kokkieh-gh-commit-block, .wp-block-kokkieh-gh-commit-block h3, .wp-block-kokkieh-gh-commit-block a:hover {
+    color: #fff;
+}
+
+.wp-block-kokkieh-gh-commit-block a {
+    color: rgb(105, 211, 252);
+}
+
+.wp-block-kokkieh-gh-commit-block h3 {
+    font-weight: 500;
 }

@@ -149,11 +149,24 @@ __webpack_require__.r(__webpack_exports__);
     },
     commitData: {
       type: 'string'
+    },
+    commitSha: {
+      type: 'string'
+    },
+    commitUrl: {
+      type: 'string'
+    },
+    authorName: {
+      type: 'string'
+    },
+    authorUrl: {
+      type: 'string'
+    },
+    commitMessage: {
+      type: 'string'
     }
   },
   edit: _ref => {
-    var _controller;
-
     let {
       attributes,
       setAttributes
@@ -163,21 +176,49 @@ __webpack_require__.r(__webpack_exports__);
     });
     const {
       commitHash,
-      commitData
-    } = attributes;
+      commitData,
+      commitSha,
+      commitUrl,
+      authorName,
+      authorUrl,
+      commitMessage
+    } = attributes; // Update commitHash value when entered into block settings
 
     function onChangeTextField(newValue) {
       setAttributes({
         commitHash: newValue
       });
+      renderCommit(newValue);
+    } // Function to make API request and render the commit data
+    // (only called when the commit hash is updated in block settings)
+
+
+    function renderCommit(hash) {
+      _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_4___default()({
+        path: '/kokkieh/commit/' + hash
+      }).then(data => {
+        setAttributes({
+          commitSha: data.sha
+        });
+        setAttributes({
+          commitUrl: data.html_url
+        });
+        setAttributes({
+          authorName: data.commit.author.name
+        });
+        setAttributes({
+          authorUrl: data.author.html_url
+        });
+        setAttributes({
+          commitMessage: data.commit.message
+        });
+      }).catch(error => {
+        setAttributes({
+          commitData: 'Please enter a valid commit ID'
+        });
+      });
     }
 
-    _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_4___default()({
-      path: '/kokkieh/commit/' + commitHash
-    }).then(data => {
-      console.log(data);
-    });
-    (_controller = controller) === null || _controller === void 0 ? void 0 : _controller.abort();
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
       key: "setting"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
@@ -189,7 +230,11 @@ __webpack_require__.r(__webpack_exports__);
     }, "Commit Hash"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
       value: commitHash,
       onChange: onChangeTextField
-    }))))), "The Commit Hash is ", commitHash);
+    }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, "Commit Hash"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+      href: commitUrl
+    }, commitSha), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, "Commit Author"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+      href: authorUrl
+    }, authorName), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, "Commit Message"), commitMessage);
   },
   save: _ref2 => {
     let {
@@ -197,9 +242,17 @@ __webpack_require__.r(__webpack_exports__);
     } = _ref2;
     const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save();
     const {
-      commitHash
+      commitSha,
+      commitUrl,
+      authorName,
+      authorUrl,
+      commitMessage
     } = attributes;
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, "The Commit Hash is ", commitHash);
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, "Commit Hash"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+      href: commitUrl
+    }, commitSha), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, "Commit Author"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+      href: authorUrl
+    }, authorName), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, "Commit Message"), commitMessage);
   }
 });
 }();
