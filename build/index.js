@@ -2,6 +2,16 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "@wordpress/api-fetch":
+/*!**********************************!*\
+  !*** external ["wp","apiFetch"] ***!
+  \**********************************/
+/***/ (function(module) {
+
+module.exports = window["wp"]["apiFetch"];
+
+/***/ }),
+
 /***/ "@wordpress/block-editor":
 /*!*************************************!*\
   !*** external ["wp","blockEditor"] ***!
@@ -125,6 +135,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
@@ -133,9 +146,14 @@ __webpack_require__.r(__webpack_exports__);
   attributes: {
     commitHash: {
       type: 'string'
+    },
+    commitData: {
+      type: 'string'
     }
   },
   edit: _ref => {
+    var _controller;
+
     let {
       attributes,
       setAttributes
@@ -144,7 +162,8 @@ __webpack_require__.r(__webpack_exports__);
       className: 'blockStyles'
     });
     const {
-      commitHash
+      commitHash,
+      commitData
     } = attributes;
 
     function onChangeTextField(newValue) {
@@ -153,6 +172,12 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
 
+    _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_4___default()({
+      path: '/kokkieh/commit/' + commitHash
+    }).then(data => {
+      console.log(data);
+    });
+    (_controller = controller) === null || _controller === void 0 ? void 0 : _controller.abort();
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
       key: "setting"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {

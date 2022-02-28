@@ -7,10 +7,14 @@ import {
         PanelBody, 
         TextControl,
 } from '@wordpress/components';
+import apiFetch from '@wordpress/api-fetch';
 
 registerBlockType( 'kokkieh/gh-commit-block', {
     attributes: {
         commitHash: {
+            type: 'string',
+        },
+        commitData: {
             type: 'string',
         },
     },
@@ -19,11 +23,19 @@ registerBlockType( 'kokkieh/gh-commit-block', {
         const blockProps = useBlockProps( { className: 'blockStyles' } );
         const {
             commitHash,
+            commitData,
         } = attributes;
 
         function onChangeTextField( newValue ) {
             setAttributes( { commitHash: newValue } );
         }
+
+        apiFetch( { path: '/kokkieh/commit/' + commitHash } )
+        .then( ( data ) => {
+            console.log(data);
+        } );
+
+        controller?.abort();
 
         return <div { ...blockProps }>
             <InspectorControls key="setting">

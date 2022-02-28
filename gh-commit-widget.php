@@ -43,6 +43,7 @@ function commit_product_summary() {
 // shows commit data on WooCommerce products
 add_action( 'woocommerce_single_product_summary', 'commit_product_summary' );
 
+// Creates a dynamic block to ouptup commit data
 // function kokkieh_gh_commit_register_block() {
 //         // automatically load dependencies and version
 //         $asset_file = include( plugin_dir_path( __FILE__ ) . 'build/index.asset.php');
