@@ -14,34 +14,34 @@
  * Domain Path:       /public/lang
  */
 
-// Creates block output
-function commit_product_summary() {
-	$commit_hash = 'eb1d6e113014a1c6fbfc0c4b8e7420b29d98d131';
-	$commit_url = site_url( '/wp-json/kokkieh/commit/' . $commit_hash );
+// // Creates block output
+// function commit_product_summary() {
+// 	$commit_hash = 'eb1d6e113014a1c6fbfc0c4b8e7420b29d98d131';
+// 	$commit_url = site_url( '/wp-json/kokkieh/commit/' . $commit_hash );
 
-	$commit_request = wp_remote_get( $commit_url );
-	if ( is_wp_error( $commit_request ) ) {
-		return false;
-	}
+// 	$commit_request = wp_remote_get( $commit_url );
+// 	if ( is_wp_error( $commit_request ) ) {
+// 		return false;
+// 	}
 
-	$commit_body = wp_remote_retrieve_body( $commit_request );
+// 	$commit_body = wp_remote_retrieve_body( $commit_request );
 
-	$commit_data = json_decode( $commit_body );
+// 	$commit_data = json_decode( $commit_body );
 
-	$block_content = '<h3>Commit hash</h3>' . 
-					'<a href="' . $commit_data->html_url . '">' . substr($commit_data->sha, 0, 7) . '</a>' .
-					'<h3>Commit Author</h3>' .
-					'<a href="' . $commit_data->author->html_url . '">' . $commit_data->commit->author->name . '</a>' . 
-					'<h3>Commit message</h3>' . 
-					$commit_data->commit->message;
+// 	$block_content = '<h3>Commit hash</h3>' . 
+// 					'<a href="' . $commit_data->html_url . '">' . substr($commit_data->sha, 0, 7) . '</a>' .
+// 					'<h3>Commit Author</h3>' .
+// 					'<a href="' . $commit_data->author->html_url . '">' . $commit_data->commit->author->name . '</a>' . 
+// 					'<h3>Commit message</h3>' . 
+// 					$commit_data->commit->message;
 	
-	if ( ! empty( $commit_data ) ) {
-		return $block_content;
-	}
-}
+// 	if ( ! empty( $commit_data ) ) {
+// 		return $block_content;
+// 	}
+// }
 
-// shows commit data on WooCommerce products
-add_action( 'woocommerce_single_product_summary', 'commit_product_summary' );
+// // shows commit data on WooCommerce products
+// add_action( 'woocommerce_single_product_summary', 'commit_product_summary' );
 
 // Creates a dynamic block to ouptup commit data
 // function kokkieh_gh_commit_register_block() {
@@ -69,9 +69,11 @@ function kokkieh_gh_commit_register_block() {
 }
 add_action( 'init', 'kokkieh_gh_commit_register_block' );
 
+// Register custom API endpoint
 require_once __DIR__ . '/include/class-rest-api.php';
 new KokkieH_REST_API();
 
+// Register custom plugin settings
 require_once __DIR__ . '/include/class-admin.php';
 new KokkieH_Admin();
 
