@@ -141,7 +141,7 @@ __webpack_require__.r(__webpack_exports__);
       setAttributes
     } = _ref;
     const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
-      className: 'blockStyle'
+      className: 'blockStyles'
     });
     const {
       commitHash
@@ -170,9 +170,7 @@ __webpack_require__.r(__webpack_exports__);
     let {
       attributes
     } = _ref2;
-    const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save({
-      className: 'blockStyle'
-    });
+    const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save();
     const {
       commitHash
     } = attributes;

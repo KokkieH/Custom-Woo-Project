@@ -16,7 +16,7 @@ registerBlockType( 'kokkieh/gh-commit-block', {
     },
 
     edit: ( { attributes, setAttributes } ) => {
-        const blockProps = useBlockProps( { className: 'blockStyle' } );
+        const blockProps = useBlockProps( { className: 'blockStyles' } );
         const {
             commitHash,
         } = attributes;
@@ -45,7 +45,7 @@ registerBlockType( 'kokkieh/gh-commit-block', {
     },
 
     save: ( { attributes } ) => {
-        const blockProps = useBlockProps.save( { className: 'blockStyle' } );
+        const blockProps = useBlockProps.save();
         const {
             commitHash,
         } = attributes;
