@@ -60,7 +60,7 @@ registerBlockType( 'kokkieh/gh-commit-block', {
                 setAttributes( { authorUrl: data.author.html_url } );
                 setAttributes( { commitMessage: data.commit.message } );
             } )
-            .catch(error => {
+            .catch( error => {
                 setAttributes( { commitSha: "Please enter a valid commit ID." } );
             } );
         }
