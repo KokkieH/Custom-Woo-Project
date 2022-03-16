@@ -1,5 +1,5 @@
 {
-  "name": "gh-commit-widget",
+  "name": "gh-commit-block",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,9 +7,12 @@
   "license": "ISC",
   "devDependencies": {
     "@wordpress/scripts": "19.2.2"
-  }, 
+  },
   "scripts": {
     "start": "wp-scripts start",
     "build": "wp-scripts build"
+  },
+  "dependencies": {
+    "@wordpress/api-fetch": "^6.0.1"
   }
 }
