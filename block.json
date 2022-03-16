@@ -6,10 +6,5 @@
     "category": "embed",
     "editorScript": "file:./build/index.js",
     "editorStyle": "file:./assets/css/editor.css",
-    "style": "file:./assets/css/style.css",
-    "supports": {
-        "color": {
-            "link": true
-        }
-    }
+    "style": "file:./assets/css/style.css"
 }

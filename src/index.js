@@ -2,10 +2,13 @@ import { registerBlockType } from '@wordpress/blocks';
 import {
         useBlockProps,
         InspectorControls,
+        ColorPalette,
 } from '@wordpress/block-editor';
 import {
         PanelBody, 
         TextControl,
+        __experimentalHeading as Heading,
+        __experimentalText as Text,
 } from '@wordpress/components';
 import apiFetch from '@wordpress/api-fetch';
 
@@ -30,6 +33,18 @@ registerBlockType( 'kokkieh/gh-commit-block', {
         commitMessage: {
             type: 'string',
         },
+        bg_color: { 
+            type: 'string', 
+            default: '#000000'
+        },
+        text_color: {
+            type: 'string',
+            default: '#ffffff'
+        },
+        link_color: {
+            type: 'string',
+            default: '#aaaaaa'
+        },
     },
 
     edit: ( { attributes, setAttributes } ) => {
@@ -42,6 +57,12 @@ registerBlockType( 'kokkieh/gh-commit-block', {
             authorUrl,
             commitMessage,
         } = attributes;
+        const onChangeBGColor = ( hexColor ) => {
+            setAttributes( { bg_color: hexColor } );
+        };
+        const onChangeTextColor = ( hexColor ) => {
+            setAttributes( { text_color: hexColor } );
+        };
 
         // Update commitHash value when entered into block settings
         function onChangeTextField( newValue ) {
@@ -65,7 +86,7 @@ registerBlockType( 'kokkieh/gh-commit-block', {
             } );
         }
 
-        return <div { ...blockProps }>
+        return <div { ...blockProps } background-color={ attributes.bg_color }>
             <InspectorControls key="setting">
                 <PanelBody title="GitHub Commit Settings">
                     <div id="gh-commit-widget-controls">
@@ -80,13 +101,35 @@ registerBlockType( 'kokkieh/gh-commit-block', {
                         </fieldset>
                     </div>
                 </PanelBody>
+                <PanelBody title="Colors">
+                    <div id="gh-commit-widget-color-controls">
+                        <fieldset>
+                            <legend className="blocks-base-control__label">
+                                Background color
+                            </legend>
+                            <ColorPalette
+                                onChange={ onChangeBGColor }
+                            />
+                        </fieldset>
+                    </div>
+                    <div id="gh-commit-widget-color-controls">
+                        <fieldset>
+                            <legend className="blocks-base-control__label">
+                                Text color
+                            </legend>
+                            <ColorPalette
+                                onChange={ onChangeTextColor }
+                            />
+                        </fieldset>
+                    </div>
+                </PanelBody>
             </InspectorControls>
-            <h3>Commit Hash</h3>
+            <h3 style={ {color: attributes.text_color} }>Commit Hash</h3>
             <a href={ commitUrl }>{ commitSha }</a>
             <h3>Commit Author</h3>
             <a href={ authorUrl }>{ authorName }</a>
             <h3>Commit Message</h3>
-            { commitMessage }
+            <Text color={ attributes.text_color }>{ commitMessage }</Text>
         </div>;
     },
 
