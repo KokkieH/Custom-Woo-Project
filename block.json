@@ -1,0 +1,10 @@
+{
+    "apiVerson": 2,
+    "name": "kokkieh/gh-commit-block",
+    "title": "Github Commit Block",
+    "description": "Embed a GitHub commit",
+    "category": "embed",
+    "editorScript": "file:./build/index.js",
+    "editorStyle": "file:./assets/css/editor.css",
+    "style": "file:./assets/css/style.css"
+}
